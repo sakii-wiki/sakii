@@ -4,5 +4,8 @@
   "npm.packageManager": "yarn",
   "search.exclude": {
     "**/.yarn": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
   }
 }

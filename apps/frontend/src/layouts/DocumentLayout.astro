@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Header from "../components/Header"
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<BaseLayout title={title}>
+  <Header />
+
+  <div class="max-w-5xl w-full self-center p-16">
+    <slot />
+  </div>
+</BaseLayout>
