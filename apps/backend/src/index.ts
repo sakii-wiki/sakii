@@ -1,6 +1,18 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 
+import 'dotenv/config'
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace NodeJS {
+    interface ProcessEnv {
+      // GITHUB_CLIENT_ID: string
+      // GITHUB_CLIENT_SECRET: string
+      NODE_ENV: 'development' | 'production'
+    }
+  }
+}
+
 import { showRoutes } from 'hono/dev'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
