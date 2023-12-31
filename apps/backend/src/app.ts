@@ -6,12 +6,13 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace NodeJS {
     interface ProcessEnv {
-      // GITHUB_CLIENT_ID: string
-      // GITHUB_CLIENT_SECRET: string
+      JWT_SECRET: string
       NODE_ENV: 'development' | 'production'
     }
   }
 }
+
+// TODO: add validation of envs
 
 import { showRoutes } from 'hono/dev'
 import { logger } from 'hono/logger'
