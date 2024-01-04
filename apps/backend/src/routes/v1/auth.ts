@@ -1,16 +1,16 @@
-import { zValidator } from '@hono/zod-validator'
-import { Hono } from 'hono'
-import { z } from 'zod'
-import { getAuth } from 'firebase-admin/auth'
-import { DefaultResponse, ErrorResponse } from '../../types/response'
-import { prisma } from '../../utils/prisma'
-import { sign } from 'hono/jwt'
-import { JWTPayload } from '../../types/jwt'
-import { setCookie } from 'hono/cookie'
+import { zValidator } from "@hono/zod-validator"
+import { Hono } from "hono"
+import { z } from "zod"
+import { getAuth } from "firebase-admin/auth"
+import { DefaultResponse, ErrorResponse } from "../../types/response"
+import { prisma } from "../../utils/prisma"
+import { sign } from "hono/jwt"
+import { JWTPayload } from "../../types/jwt"
+import { setCookie } from "hono/cookie"
 
 const AuthRouter = new Hono()
 
-AuthRouter.post('/', zValidator('json', z.object({ idToken: z.string() })), async (c) => {
+AuthRouter.post("/", zValidator("json", z.object({ idToken: z.string() })), async (c) => {
   const body = await c.req.json()
 
   const auth = getAuth()
@@ -20,7 +20,7 @@ AuthRouter.post('/', zValidator('json', z.object({ idToken: z.string() })), asyn
     c.status(400)
     return c.json({
       error: false,
-      message: '사용할 수 있는 이메일이 없습니다',
+      message: "사용할 수 있는 이메일이 없습니다",
     } satisfies ErrorResponse)
   }
 
@@ -32,22 +32,17 @@ AuthRouter.post('/', zValidator('json', z.object({ idToken: z.string() })), asyn
 
   const jwt = await sign({ id: user.id } satisfies JWTPayload, process.env.JWT_SECRET)
 
-  setCookie(
-    c,
-    'access_token',
-    jwt,
-    process.env.NODE_ENV !== 'development'
-      ? {
-          domain: process.env.VERCEL_URL ?? '',
-          httpOnly: true,
-          secure: true,
-        }
-      : undefined,
-  )
+  setCookie(c, "access_token", jwt, {
+    ...(process.env.NODE_ENV !== "development" && {
+      domain: "", // TODO: put here the backend's domain
+      secure: true,
+    }),
+    httpOnly: true,
+  })
 
   c.status(201)
 
-  return c.json({ code: 201, data: 'OK' } satisfies DefaultResponse)
+  return c.json({ code: 201, data: "OK" } satisfies DefaultResponse)
 })
 
 export default AuthRouter
