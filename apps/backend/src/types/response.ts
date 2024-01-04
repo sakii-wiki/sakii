@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from "zod"
 
 export const ErrorResponse = z.object({
   error: z.literal(false),

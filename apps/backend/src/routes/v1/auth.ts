@@ -16,13 +16,14 @@ AuthRouter.post("/", zValidator("json", z.object({ idToken: z.string() })), asyn
   const auth = getAuth()
   const token = await auth.verifyIdToken(body.idToken)
 
-  if (!token.email) {
-    c.status(400)
-    return c.json({
-      error: false,
-      message: "사용할 수 있는 이메일이 없습니다",
-    } satisfies ErrorResponse)
-  }
+  if (!token.email)
+    return c.json(
+      {
+        error: false,
+        message: "사용할 수 있는 이메일이 없습니다",
+      } satisfies ErrorResponse,
+      400,
+    )
 
   const user = await prisma.user.upsert({
     where: { email: token.email },
@@ -40,9 +41,7 @@ AuthRouter.post("/", zValidator("json", z.object({ idToken: z.string() })), asyn
     httpOnly: true,
   })
 
-  c.status(201)
-
-  return c.json({ code: 201, data: "OK" } satisfies DefaultResponse)
+  return c.json({ code: 201, data: "OK" } satisfies DefaultResponse, 201)
 })
 
 export default AuthRouter
