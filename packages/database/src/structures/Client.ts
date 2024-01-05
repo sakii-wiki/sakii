@@ -3,13 +3,16 @@ import { Redis, RedisOptions } from 'ioredis'
 import { PrismaClientOptions } from '@prisma/client/runtime/library'
 
 export class DatabaseClient extends PrismaClient {
-  public redis: Redis
+  public redis!: Redis
 
-  constructor(public options: ClientOptions) {
-    super(options.prisma)
+  constructor(public options?: ClientOptions) {
+    super(options?.prisma)
 
-    // @ts-ignore
-    this.redis = new Redis(options.redis ?? process.env.REDIS_URL ?? 'redis://cache:6379')
+    if (!options?.useRedis) {
+      if (options?.redis) this.redis = new Redis(options.redis)
+
+      if (process.env.REDIS_URL) this.redis = new Redis(process.env.REDIS_URL)
+    }
 
     this.$connect().then(() => {
       console.info('Connected to Prisma')
@@ -26,7 +29,12 @@ export class DatabaseClient extends PrismaClient {
   }
 }
 
-export type ClientOptions = DatabaseOptions
+export type ClientOptions = {
+  /**
+   * @default false
+   */
+  useRedis?: boolean
+} & DatabaseOptions
 
 export interface DatabaseOptions {
   redis?: RedisOptions

@@ -1,3 +1,6 @@
+# For firebase
+*.secret.json
+
 # Packages
 node_modules/
 

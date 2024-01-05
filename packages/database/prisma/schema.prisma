@@ -7,11 +7,33 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+   url  	    = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id    String @id @default(uuid())
-  name  String
-  email String
+  id            String             @id    @default(cuid())
+  email         String            @unique
+  name          String?
+  contributedTo UsersOnDocuments[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model Document {
+  id           String             @id
+  content      String
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  contributors UsersOnDocuments[]
+}
+
+model UsersOnDocuments {
+  document   Document @relation(fields: [documentId], references: [id])
+  documentId String
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  addedAt    DateTime @default(now())
+
+  @@id([userId, documentId])
 }
