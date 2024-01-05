@@ -1,9 +1,12 @@
-import { Hono } from 'hono'
+import { Hono } from "hono"
+import { prisma } from "../../utils/prisma"
 
-const router = new Hono()
+const DocumentsRouter = new Hono()
 
-router.get(':name')
+DocumentsRouter.get("/:name", async (c) => {
+  return c.json(await prisma.document.findUnique({ where: { id: c.req.param("name") } }))
+})
 
-router.post(':name')
+DocumentsRouter.post("/:name")
 
-export default router
+export default DocumentsRouter

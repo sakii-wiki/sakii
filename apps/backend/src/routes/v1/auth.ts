@@ -39,6 +39,7 @@ AuthRouter.post("/", zValidator("json", z.object({ idToken: z.string() })), asyn
       secure: true,
     }),
     httpOnly: true,
+    sameSite: "None",
   })
 
   return c.json({ code: 201, data: "OK" } satisfies DefaultResponse, 201)
