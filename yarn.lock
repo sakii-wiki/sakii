@@ -1438,6 +1438,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tailwindcss/typography@npm:^0.5.10":
+  version: 0.5.10
+  resolution: "@tailwindcss/typography@npm:0.5.10"
+  dependencies:
+    lodash.castarray: "npm:^4.4.0"
+    lodash.isplainobject: "npm:^4.0.6"
+    lodash.merge: "npm:^4.6.2"
+    postcss-selector-parser: "npm:6.0.10"
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: dd9934a556661f1eef57a8101fdf89a438cb05bb48b52b79832f8cbf772181b16e87a5cbab594f7e2de64a5ff457514177af91f430d5d97a5a833db22b6f61c3
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -4320,6 +4334,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend@workspace:apps/frontend"
   dependencies:
+    "@tailwindcss/typography": "npm:^0.5.10"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
@@ -5965,6 +5980,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.castarray@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "lodash.castarray@npm:4.4.0"
+  checksum: fca8c7047e0ae2738b0b2503fb00157ae0ff6d8a1b716f87ed715b22560e09de438c75b65e01a7e44ceb41c5b31dce2eb576e46db04beb9c699c498e03cbd00f
+  languageName: node
+  linkType: hard
+
 "lodash.clonedeep@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
@@ -7254,6 +7276,16 @@ __metadata:
   peerDependencies:
     postcss: ^8.2.14
   checksum: 02aaac682f599879fae6aab3210aee59b8b5bde3ba242527f6fd103726955b74ffa05c2b765920be5f403e758045582534d11b1e19add01586c19743ed99e3fe
+  languageName: node
+  linkType: hard
+
+"postcss-selector-parser@npm:6.0.10":
+  version: 6.0.10
+  resolution: "postcss-selector-parser@npm:6.0.10"
+  dependencies:
+    cssesc: "npm:^3.0.0"
+    util-deprecate: "npm:^1.0.2"
+  checksum: f8ad9beb764a64b51a8027650e745a44ed7198f0b968b823db9563a54990924bcf9eb6fb59fbbb7eb05a89b2b6a24b81b2b7d60ecadda15b04a0024c7663f436
   languageName: node
   linkType: hard
 
