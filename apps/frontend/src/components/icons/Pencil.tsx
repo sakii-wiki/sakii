@@ -1,7 +1,7 @@
-import { ComponentProps, FC } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { ComponentProps, FC } from "react"
+import { twMerge } from "tailwind-merge"
 
-const PencilIcon: FC<ComponentProps<'svg'>> = (props) => {
+const PencilIcon: FC<ComponentProps<"svg">> = (props) => {
   return (
     <svg
       {...props}
@@ -10,7 +10,7 @@ const PencilIcon: FC<ComponentProps<'svg'>> = (props) => {
       viewBox="0 0 24 24"
       strokeWidth={props.strokeWidth ?? 1.5}
       stroke="currentColor"
-      className={twMerge('h-6 w-6', props.className)}
+      className={twMerge("h-6 w-6", props.className)}
     >
       <path
         strokeLinecap="round"

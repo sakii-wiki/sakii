@@ -1,1 +1,1 @@
-module.exports = require('../../.lintstagedrc.json')
+module.exports = require("../../.lintstagedrc.json")

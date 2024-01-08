@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client'
-import { Redis, RedisOptions } from 'ioredis'
-import { PrismaClientOptions } from '@prisma/client/runtime/library'
+import { PrismaClient } from "@prisma/client"
+import { Redis, RedisOptions } from "ioredis"
+import { PrismaClientOptions } from "@prisma/client/runtime/library"
 
 export class DatabaseClient extends PrismaClient {
   public redis!: Redis
@@ -15,14 +15,14 @@ export class DatabaseClient extends PrismaClient {
     }
 
     this.$connect().then(() => {
-      console.info('Connected to Prisma')
+      console.info("Connected to Prisma")
     })
   }
 
   public async disconnect() {
-    console.warn('Disconnecting Database...')
+    console.warn("Disconnecting Database...")
 
-    this.$disconnect().then(() => console.warn('Disconnected to Prisma'))
+    this.$disconnect().then(() => console.warn("Disconnected to Prisma"))
     this.redis.disconnect()
 
     return true

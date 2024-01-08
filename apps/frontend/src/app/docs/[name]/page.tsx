@@ -1,7 +1,7 @@
-import Button from '@/components/Button'
-import EllipsisHorizontalIcon from '@/components/icons/EllipsisHorizontal'
-import PencilIcon from '@/components/icons/Pencil'
-import { NextPage } from 'next'
+import Button from "@/components/Button"
+import EllipsisHorizontalIcon from "@/components/icons/EllipsisHorizontal"
+import PencilIcon from "@/components/icons/Pencil"
+import { NextPage } from "next"
 
 const DocumentPage: NextPage = () => {
   return (

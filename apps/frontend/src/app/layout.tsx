@@ -1,10 +1,10 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import Header from '@/components/layouts/Header'
+import type { Metadata } from "next"
+import "./globals.css"
+import Header from "@/components/layouts/Header"
 
 export const metadata: Metadata = {
-  title: 'Sakii',
-  description: '개발자들을 위한 위키',
+  title: "Sakii",
+  description: "개발자들을 위한 위키",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

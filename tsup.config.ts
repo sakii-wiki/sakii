@@ -1,10 +1,10 @@
-import { defineConfig, Options } from 'tsup';
+import { defineConfig, Options } from "tsup"
 
 export function createTsupConfig({
-  entry = ['src/index.ts'],
-  platform = 'node',
-  format = ['esm', 'cjs'],
-  target = 'es2022',
+  entry = ["src/index.ts"],
+  platform = "node",
+  format = ["esm", "cjs"],
+  target = "es2022",
   skipNodeModulesBundle = true,
   clean = true,
   shims = true,
@@ -27,5 +27,5 @@ export function createTsupConfig({
     keepNames,
     dts,
     sourcemap,
-  });
+  })
 }
